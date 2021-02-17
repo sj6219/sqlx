@@ -1,3 +1,7 @@
+set  DATABASE_URL=sqlite:C:\Users\sjpark\Documents\sqlx\todos.db
+set  DATABASE_URL=sqlite:todos.db
+cargo build --bin=sqlx-example-sqlite-todos --package=sqlx-example-sqlite-todos
+
 # TODOs Example
 
 ## Setup

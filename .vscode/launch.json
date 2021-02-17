@@ -1,0 +1,829 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(Windows) Launch",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\sqlx-example-sqlite-todos.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [ {"name": "DATABASE_URL", "value": "sqlite:todos.db"} ]
+            //"environment": [{}],
+            //"console": "externalTerminal"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'sqlx'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=sqlx",
+                    "--package=sqlx-cli"
+                ],
+                "filter": {
+                    "name": "sqlx",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'sqlx-example-sqlite-todos'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=sqlx-example-sqlite-todos",
+                    "--package=sqlx-example-sqlite-todos"
+                ],
+                "filter": {
+                    "name": "sqlx-example-sqlite-todos",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'sqlx'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "sqlx",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'any'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=any",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "any",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'any-pool'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=any-pool",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "any-pool",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'migrate-macro'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=migrate-macro",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "migrate-macro",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'sqlite'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=sqlite",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "sqlite",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'sqlite-types'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=sqlite-types",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "sqlite-types",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'sqlite-describe'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=sqlite-describe",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "sqlite-describe",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'sqlite-macros'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=sqlite-macros",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "sqlite-macros",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'mysql'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=mysql",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "mysql",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'mysql-types'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=mysql-types",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "mysql-types",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'mysql-describe'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=mysql-describe",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "mysql-describe",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'mysql-macros'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=mysql-macros",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "mysql-macros",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'postgres'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=postgres",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "postgres",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'postgres-types'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=postgres-types",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "postgres-types",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'postgres-describe'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=postgres-describe",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "postgres-describe",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'postgres-macros'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=postgres-macros",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "postgres-macros",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'postgres-derives'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=postgres-derives",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "postgres-derives",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'mssql'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=mssql",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "mssql",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'mssql-types'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=mssql-types",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "mssql-types",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'mssql-describe'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=mssql-describe",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "mssql-describe",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'mssql-macros'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=mssql-macros",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "mssql-macros",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'ui-tests'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=ui-tests",
+                    "--package=sqlx"
+                ],
+                "filter": {
+                    "name": "ui-tests",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'sqlx-core'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=sqlx-core"
+                ],
+                "filter": {
+                    "name": "sqlx-core",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'sqlx-rt'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=sqlx-rt"
+                ],
+                "filter": {
+                    "name": "sqlx-rt",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'sqlx-test'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=sqlx-test"
+                ],
+                "filter": {
+                    "name": "sqlx-test",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'sqlx-cli'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=sqlx-cli"
+                ],
+                "filter": {
+                    "name": "sqlx-cli",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'sqlx'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=sqlx",
+                    "--package=sqlx-cli"
+                ],
+                "filter": {
+                    "name": "sqlx",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'cargo-sqlx'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=cargo-sqlx",
+                    "--package=sqlx-cli"
+                ],
+                "filter": {
+                    "name": "cargo-sqlx",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'cargo-sqlx'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=cargo-sqlx",
+                    "--package=sqlx-cli"
+                ],
+                "filter": {
+                    "name": "cargo-sqlx",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug benchmark 'pg_pool'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bench=pg_pool",
+                    "--package=sqlx-bench"
+                ],
+                "filter": {
+                    "name": "pg_pool",
+                    "kind": "bench"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'sqlx-example-mysql-todos'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=sqlx-example-mysql-todos",
+                    "--package=sqlx-example-mysql-todos"
+                ],
+                "filter": {
+                    "name": "sqlx-example-mysql-todos",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'sqlx-example-mysql-todos'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=sqlx-example-mysql-todos",
+                    "--package=sqlx-example-mysql-todos"
+                ],
+                "filter": {
+                    "name": "sqlx-example-mysql-todos",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'json'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=json",
+                    "--package=json"
+                ],
+                "filter": {
+                    "name": "json",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'json'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=json",
+                    "--package=json"
+                ],
+                "filter": {
+                    "name": "json",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'sqlx-example-postgres-listen'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=sqlx-example-postgres-listen",
+                    "--package=sqlx-example-postgres-listen"
+                ],
+                "filter": {
+                    "name": "sqlx-example-postgres-listen",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'sqlx-example-postgres-listen'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=sqlx-example-postgres-listen",
+                    "--package=sqlx-example-postgres-listen"
+                ],
+                "filter": {
+                    "name": "sqlx-example-postgres-listen",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'sqlx-example-postgres-todos'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=sqlx-example-postgres-todos",
+                    "--package=sqlx-example-postgres-todos"
+                ],
+                "filter": {
+                    "name": "sqlx-example-postgres-todos",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'sqlx-example-postgres-todos'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=sqlx-example-postgres-todos",
+                    "--package=sqlx-example-postgres-todos"
+                ],
+                "filter": {
+                    "name": "sqlx-example-postgres-todos",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'sqlx-example-postgres-mockable-todos'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=sqlx-example-postgres-mockable-todos",
+                    "--package=sqlx-example-postgres-mockable-todos"
+                ],
+                "filter": {
+                    "name": "sqlx-example-postgres-mockable-todos",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'sqlx-example-postgres-mockable-todos'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=sqlx-example-postgres-mockable-todos",
+                    "--package=sqlx-example-postgres-mockable-todos"
+                ],
+                "filter": {
+                    "name": "sqlx-example-postgres-mockable-todos",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'sqlx-example-sqlite-todos'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=sqlx-example-sqlite-todos",
+                    "--package=sqlx-example-sqlite-todos"
+                ],
+                "filter": {
+                    "name": "sqlx-example-sqlite-todos",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
