@@ -2,6 +2,27 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "cargo build mysql",
+			"type": "shell",
+			"command": "cargo",
+			"args": [
+				"build",
+				"--bin=sqlx-example-mysql-todos",
+				"--package=sqlx-example-mysql-todos"
+			],
+			"options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+					"DATABASE_URL": "mysql://root:password@localhost/todos",
+                }
+            },
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
 			"label": "cargo build sqlite",
 			"type": "shell",
 			"command": "cargo",
@@ -11,7 +32,7 @@
 				"--package=sqlx-example-sqlite-todos"
 			],
 			"options": {
-//                "cwd": "${workspaceFolder}/beam",
+                "cwd": "${workspaceFolder}",
                 "env": {
                     "DATABASE_URL": "sqlite:todos.db",
                 }
@@ -19,7 +40,7 @@
 			"problemMatcher": [],
 			"group": {
 				"kind": "build",
-				"isDefault": true
+				"isDefault": false
 			}
 		}
 	]

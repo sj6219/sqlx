@@ -5,16 +5,28 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(Windows) Launch",
+            "name": "(Windows) Launch mysql",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\target\\debug\\sqlx-example-mysql-todos.exe",
+            "args": ["add", "desc1"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [ {"name": "DATABASE_URL", "value": "mysql://root:password@localhost/todos"} ]
+            //"environment": [{}],
+            "console": "externalTerminal"
+        },
+        {
+            "name": "(Windows) Launch sqlite",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}\\target\\debug\\sqlx-example-sqlite-todos.exe",
-            "args": [],
+            "args": ["add", "desc1"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [ {"name": "DATABASE_URL", "value": "sqlite:todos.db"} ]
             //"environment": [{}],
-            //"console": "externalTerminal"
+            "console": "externalTerminal"
         },
         {
             "type": "lldb",
@@ -28,6 +40,24 @@
                 ],
                 "filter": {
                     "name": "sqlx",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'sqlx-example-mysql-todos'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=sqlx-example-mysql-todos",
+                    "--package=sqlx-example-mysql-todos"
+                ],
+                "filter": {
+                    "name": "sqlx-example-mysql-todos",
                     "kind": "bin"
                 }
             },
@@ -616,24 +646,6 @@
                 "filter": {
                     "name": "pg_pool",
                     "kind": "bench"
-                }
-            },
-            "args": [],
-            "cwd": "${workspaceFolder}"
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Debug executable 'sqlx-example-mysql-todos'",
-            "cargo": {
-                "args": [
-                    "build",
-                    "--bin=sqlx-example-mysql-todos",
-                    "--package=sqlx-example-mysql-todos"
-                ],
-                "filter": {
-                    "name": "sqlx-example-mysql-todos",
-                    "kind": "bin"
                 }
             },
             "args": [],
