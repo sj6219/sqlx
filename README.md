@@ -382,3 +382,101 @@ at your option.
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
 dual licensed as above, without any additional terms or conditions.
+
+############################################################################
+    let id = sqlx::query!(
+        r#"
+INSERT INTO todos ( description )
+VALUES ( ?1 )
+        "#,
+        description
+    )
+    .execute(pool)
+    .await?
+    .last_insert_id();
+
+
+    let recs = sqlx::query!(
+        r#"
+SELECT id, description, done
+FROM todos
+ORDER BY id
+        "#
+    )
+    .fetch_all(pool)
+    .await?;
+
+
+macro_rules! query
+        $crate::sqlx_macros::expand_query!(source = $query, args = [$($args)*])
+query::expand_input(input)
+expand_from_db(input, &db_url) 
+
+{
+            let data = block_on(async {
+                let mut conn = sqlx_core::mssql::MssqlConnection::connect(db_url.as_str()).await?;
+                QueryData::from_db(&mut conn, &input.src).await
+            })?;
+
+            expand_with_data(input, data, false)
+}
+
+expand_with_data
+{
+        quote! {
+            ::sqlx::query_with::<#db_path, _>(#sql, #query_args)
+        }
+            RecordType::Given(ref out_ty) => {
+                let columns = output::columns_to_rust::<DB>(&data.describe)?;
+
+                output::quote_query_as::<DB>(&input, out_ty, &query_args, &columns)
+            }
+
+}
+
+########## 
+{
+ #[allow(clippy :: all)]    
+ {        
+	use :: sqlx :: Arguments as _ ; 
+	let arg0 = & (description) ; 
+	let mut   query_args = < sqlx :: mysql :: MySql as :: sqlx :: database :: HasArguments > :: Arguments :: default() ; 
+	query_args . reserve(1usize, 0 + :: sqlx :: encode :: Encode :: < sqlx :: mysql :: MySql > :: size_hint(arg0)) ; 
+	query_args . add(arg0) ; 
+	:: sqlx       :: query_with :: < sqlx :: mysql :: MySql, _ > 
+       	("\nINSERT INTO todos ( description )\nVALUES ( ? )\n        ",         query_args)    
+ }
+}
+
+########## 
+{    
+ #[allow(clippy :: all)]
+ {        
+	use :: sqlx :: Arguments as _ ; 
+	let query_args = < sqlx :: mysql :: MySql as :: sqlx :: database :: HasArguments > :: Arguments :: default() ; 
+	#[derive(Debug)] 
+	struct Record        
+	{ 
+		r#id : u64, 
+		r#description : String, 
+		r#done : i8, 
+	} 
+	:: sqlx :: query_with :: < sqlx :: mysql :: MySql, _ >
+        ("\nSELECT id, description, done\n
+		FROM todos\n
+		ORDER BY id\n        ",
+         query_args) 
+		.  try_map(| row : sqlx :: mysql :: MySqlRow | {
+			use :: sqlx :: Row as _ ; 
+			let r#id = row . try_get_unchecked :: < u64, _ > (0usize) ? ; 
+			let r#description = row . try_get_unchecked :: < String, _ > (1usize) ? ; 
+			let r#done = row . try_get_unchecked :: < i8, _ > (2usize) ? ;
+	                Ok(Record {
+			       	r#id : r#id, 
+				r#description : r#description, 
+				r#done : r#done                       
+				})
+                        })    
+ }
+}
+
